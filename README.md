@@ -1,5 +1,6 @@
 # flask-test
 
+<<<<<<< HEAD
 ## 红图
 - 蓝图升级版本
   例： /api/v1/user/[get、put、delete]  蓝图为 @app.route('/user/get') 红图为：@app.route('/get')
@@ -18,3 +19,6 @@
   
 ## Hide方法
 - 实例化时，隐藏model中某些字段
+=======
+flask练手项目，规范APIException，规范返回信息，异常信息处理，蓝图升级
+>>>>>>> fcff4cee2d7b55a1818873f7e01f0032dea9dbd0
