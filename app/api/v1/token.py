@@ -31,6 +31,7 @@ def get_token():
     }
     return jsonify(t), 201
 
+
 @api.route('/secret', methods=['POST'])
 def get_token_info():
     """获取令牌信息"""
@@ -59,6 +60,6 @@ def generate_auth_token(uid, ac_type, scope=None,
                    expires_in=expiration)
     return s.dumps({
         'uid': uid,
-        'type': ac_type.value
-        # 'scope':scope
+        'type': ac_type.value,
+        'scope':scope
     })

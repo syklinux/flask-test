@@ -36,3 +36,7 @@ class AuthFailed(APIException):
 class DeleteSuccess(APIException):
     msg = 'authorization failed'
     code = 401
+
+class Forbidden(APIException):
+    code = 403
+    msg = 'forbidden, not in scope'

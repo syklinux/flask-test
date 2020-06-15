@@ -2,6 +2,7 @@
 from werkzeug.exceptions import HTTPException
 from flask import request,json
 
+
 class APIException(HTTPException):
     code = 500
     msg = 'sorry, we make a mistake!'
