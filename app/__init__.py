@@ -14,9 +14,11 @@ def register_plugin(app):
         db.create_all() #必须在 app的上下文中才能生效
 
 def create_app():
+    from app.utils.tsk import celery
     app = Flask(__name__)
     app.config.from_object('app.config.setting')
     app.config.from_object('app.config.secure')
+    celery.conf.update(app.config)
     register_blueprints(app)
     register_plugin(app)
     return app

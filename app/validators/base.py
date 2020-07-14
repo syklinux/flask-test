@@ -4,6 +4,7 @@ from wtforms import Form
 from app.utils.error_code import ParameterError
 from flask import request
 
+
 class BaseForm(Form):
     def __init__(self):
         data = request.get_json(silent=True)
@@ -15,3 +16,5 @@ class BaseForm(Form):
         if not vaild:
             raise ParameterError(msg=self.errors)
         return self
+
+

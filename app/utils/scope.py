@@ -20,15 +20,18 @@ class Scope:
 
 
 class AdminScope(Scope):
-    # allow_api = ['v1.user+super_get_user',
+    # allow_api = ['v1.user+update_role_user',]
     #              'v1.user+super_delete_user']
-    allow_module = ['v1.user']
+    allow_module = ['v1.user',
+                    'v1.update_user_role',
+                    'v1.get_role',
+                    'v1.update_role_user'
+                    ]
 
     def __init__(self):
         # 排除
-        pass
         # self + UserScope()
-
+        pass
 
 class UserScope(Scope):
     allow_module = ['v1.gift']
@@ -47,13 +50,17 @@ def is_in_scope(scope, endpoint):
     # v1.view_func   v1.module_name+view_func
     # v1.red_name+view_func
     scope = globals()[scope]()
-    splits = endpoint.split('+')
-    red_name = splits[0]
+    if '+' in endpoint:
+        splits = endpoint.split('+')
+        red_name = splits[0]
+    else:
+        endpoint = endpoint
+        red_name = False
     if endpoint in scope.forbidden:
         return False
-    if endpoint in scope.allow_api:
+    if endpoint in scope.allow_module:
         return True
-    if red_name in scope.allow_module:
+    if red_name and red_name in scope.allow_module:
         return True
     else:
         return False

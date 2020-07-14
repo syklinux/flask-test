@@ -14,8 +14,11 @@ class APIException(HTTPException):
             self.code = code
         if msg:
             self.msg = msg
-        if data:
-            self.data = data.json
+        try:
+            if data:
+                self.data = data.json
+        except:
+            self.data = {}
         super(APIException,self).__init__(msg, None)
 
     def get_body(self, environ=None):

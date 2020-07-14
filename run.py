@@ -6,6 +6,7 @@ from werkzeug.exceptions import HTTPException
 
 app = create_app()
 
+
 @app.errorhandler(Exception)
 def framework_error(e):
     if isinstance(e, APIException):
@@ -21,6 +22,7 @@ def framework_error(e):
         else:
             return e
 
+
 if __name__ == '__main__':
-    # app.run(debug=True)
-    app.run()
+    app.run(debug=True)
+    # app.run()
